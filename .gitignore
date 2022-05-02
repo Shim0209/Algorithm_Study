@@ -10,6 +10,7 @@
 
 # Folder
 Hello/
+*.sln
 
 # User-specific files
 *.rsuser
