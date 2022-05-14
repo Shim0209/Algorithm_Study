@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 /// 선택정렬
 /// - 정렬하고자 하는 배열중 가장 작은수를 찾아 앞으로 보내는 정렬이다.
@@ -18,6 +19,9 @@ namespace SelectionSort
     {
         static void Main(string[] args)
         {
+            Stopwatch watch = Stopwatch.StartNew();
+            Console.WriteLine("[선택정렬]");
+
             int[] arr = new int[] { 4, 3, 5, 9, 2, 1, 7, 8, 6, 0 };
             int targetIndex, temp;
 
@@ -25,7 +29,9 @@ namespace SelectionSort
                 Console.Write($"{i} ");
             Console.WriteLine();
 
+
             // 배열의 마지막 값은 자연스럽게 정렬 되므로 배열크기 -1 만큼만 반복
+            watch.Start();
             for (int i = 0; i < arr.Length - 1; i++)
             {
                 // 시작인덱스 저장
@@ -49,9 +55,13 @@ namespace SelectionSort
                     arr[targetIndex] = temp;
                 }
             }
+            watch.Stop();
 
             foreach(int i in arr)
                 Console.Write($"{i} ");
+            Console.WriteLine();
+
+            Console.WriteLine($"코드 실행 시간 : {watch.ElapsedMilliseconds} ms");
         }
     }
 }
