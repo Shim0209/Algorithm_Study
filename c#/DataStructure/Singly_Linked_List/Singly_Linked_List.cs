@@ -20,6 +20,8 @@ namespace Singly_Linked_List
             this.Next = null;
         }
     }
+
+
     public class SinglyLinkedList<T>
     {
         private SinglyLinkedListNode<T> head;
@@ -106,6 +108,31 @@ namespace Singly_Linked_List
             }
 
             return cnt;
+        }
+
+        /// Cycle 혹은 루프를 탐지하는 기능
+        /// - head에서 출발할 때 두개의 포인터를 사용, 다른 속도로 이동한다
+        /// - 만약 두 노드가 어느 싯점에 동일하게 만나면 Cycle이 있는 것이다.
+        public static bool IsCyclic(SinglyLinkedListNode<T> head)
+        {
+            var p1 = head;
+            var p2 = head;
+            
+            do
+            {
+                p1 = p1.Next;
+                p2 = p2.Next;
+
+                if(p1 == null || p2 == null || p2.Next == null)
+                {
+                    return false;
+                }
+
+                p2 = p2.Next;
+
+            } while(p1 != p2);
+
+            return true;
         }
     }
     class MainApp
