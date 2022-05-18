@@ -31,6 +31,8 @@ namespace Doubly_Linked_List
         }
     }
     #endregion
+    
+    
     #region 이중 연결 리스트
     public class DoublyLinkedList<T>
     {
@@ -123,6 +125,8 @@ namespace Doubly_Linked_List
         }
     }
     #endregion
+    
+    
     #region 원형 이중 연결 리스트
     public class CircularLinkedList<T>
     {
@@ -209,6 +213,26 @@ namespace Doubly_Linked_List
             } while (current != head);
 
             return cnt;
+        }
+
+        /// 원형 연결 리스트인지 체크
+        /// - head로부터 출발하여 계속 다음노드를 따라가면서 다시 head로 돌아오면 원형 연결 리스트이다.
+        /// - 마지막에 null을 만나면 원형 연결 리스트가 아니라고 판단 할 수 있다.
+        public static bool IsCircular(DoublyLinkedListNode<T> head)
+        {
+            //빈 리스트는 원형 리스트임
+            if (head == null) return true;
+
+            var current = head;
+            while (current != null)
+            {
+                current = current.Next;
+                if (current == head)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
     #endregion
